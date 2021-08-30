@@ -1,0 +1,35 @@
+{% extends 'homepage/base.html' %}
+
+{% block content %}
+    
+    <div class="ml-3 mt-3">
+    <form method=POST action="{% url 'search-posts' %}">
+    {% csrf_token %}
+    <input type="search" name="searched" placeholder="Searched">
+    <button type="submit">Submit</button>
+    </form>
+
+    {% if searched %}
+    <h2>Results for: {{ searched }}</h2>
+    </div>
+        {% for spost in sposts %}
+        <div class="border w-25 border-dark ml-3">
+        <div class="ml-3">
+        {% if request.user == spost.author %}
+            <h2>{{spost}}</h2><br />
+            {{spost.content}}<br>
+            {{spost.location}}<br />
+            {{spost.department}}<br />
+            {{spost.function}}<br><br>
+        {% endif %}
+        </div>
+        </div>
+        <br>
+
+        {% endfor %}
+    {% else %}
+    <h2>You forgot to search for something.</h2>
+    
+    {% endif %}
+
+{% endblock content %}

@@ -1,0 +1,22 @@
+{% extends "homepage/base.html" %}
+{% block content %}
+	<div class="ml-3">
+	<a href="{% url 'user-posts' post.author.username %}">{{ object.author }}</a>
+	{{ object.date_posted }}
+	<br><br>
+	<div class="border w-25 border-dark">
+	<div class="ml-3">
+	<h2>{{ object.title }}</h2>
+	<p>{{ object.content }}</p>
+	<p>{{ object.location}}</p>
+	<p>{{ object.department }}</p>
+	<p>{{ object.function }}</p>
+	{% if object.author == user %}
+	</div>
+	</div>
+	<a href="{% url 'post-update' object.id %}">Update</a>
+	&nbsp;&nbsp;
+	<a href="{% url 'post-delete' object.id %}">Delete</a>
+	</div>
+	{% endif %}
+{% endblock content %}
