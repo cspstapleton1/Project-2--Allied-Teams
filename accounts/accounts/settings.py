@@ -30,7 +30,7 @@ SECRET_KEY = os.environ.get('S_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['mybetajobdjangoapp.herokuapp.com']
+ALLOWED_HOSTS = ['myjobdjangoapp.herokuapp.com']
 
 
 # Application definition
